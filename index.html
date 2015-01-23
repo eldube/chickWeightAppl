@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The Effect of Diet on Chicken Weight</title>
+  <meta charset="utf-8">
+  <meta name="description" content="The Effect of Diet on Chicken Weight">
+  <meta name="author" content="Enock L. Dube">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>The Effect of Diet on Chicken Weight</h1>
+    <h2>23 January 2015</h2>
+    <p>Enock L. Dube<br/>Data Science Student</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>INTRODUCTION</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>The rate of growth for chicks can depend on the diet they are     given.</p></li>
+<li><p>In this presentations, we report on a simple  application that could be used to calculate the projected weight of a chick given the age (number of days since birth)</p></li>
+<li><p>The applications can be used to :</p>
+
+<ul>
+<li>Calculate the projected weight given the age</li>
+<li>Compare the  growth rate of the chickens for  the different growth rates</li>
+</ul></li>
+<li><p>The application was develop in RStudio using  the   <strong>shiny</strong> package</p></li>
+<li><p>The calculations performed by the applications are based on a <em>linear regression model</em> build from an experimental dataset <strong>ChickWeight</strong> which is distributed with R version 3.1.2 </p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>THE APPLICATION INTERFACE</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/img/ui450.png" alt=""></p>
+
+<p>You can run the application from <strong><a href="http://eldube.shinyapps.io/project-App">http://eldube.shinyapps.io/project-App</a></strong></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>THE DATA USED IN BUILDING THE REGRESSION MODEL</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">data(ChickWeight)
+</code></pre>
+
+<ul>
+<li>The regression model used in the application was built from the  <strong>ChickWeight</strong>  dataset which has 578 observations and 4 variables. The first three observations are:</li>
+</ul>
+
+<pre><code>##   weight Time Chick Diet
+## 1     42    0     1    1
+## 2     51    2     1    1
+## 3     59    4     1    1
+</code></pre>
+
+<ul>
+<li><p>The chicks were divided in into four diet groups and the weight of each chick was recorded from day 0 (birth) to day 20, at 2 day intervals. A final recording was made on day 21.</p></li>
+<li><p>A regression model for each diet (sample shown in next slide) can be build using the average weight at each recorded time interval.</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>SAMPLE REGRESSION MODEL</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">source (&quot;assets/helpers.R&quot;) #source code available from 
+diet &lt;- 1
+data &lt;- ChickWeight
+model &lt;-  getDietModel(ChickData = data, dietchoice = diet)
+</code></pre>
+
+<pre><code class="r">plotDietModel(ChickData = data, dietchoice = diet, x=0, y=0)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='INTRODUCTION'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='THE APPLICATION INTERFACE'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='THE DATA USED IN BUILDING THE REGRESSION MODEL'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='SAMPLE REGRESSION MODEL'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+
+  <script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
